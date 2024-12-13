@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health</title>
+    <link rel="stylesheet" href="css/style1.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="index.html" class="logo-link" aria-label="Button"></a>
+            <p class="name">
+                <a href="index.html" class="nav-link">Aurelia.</a>
+                <span class="highlight">
+                    <a href="index.html" class="nav-link">aur</a>
+                </span>
+                <span class="middle">
+                    <img src="/Images/line.png" alt="Decorative line separator">
+                </span>
+                <span class="typing-animation">jellyfish</span>
+            </p>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="Project.html" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="Contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="About.html" class="nav-link">About</a></li>
+            </ul>
+        </nav>
+
+        <!-- Profile and Contact Container -->
+        <div class="contact-container">
+            <div class="profile-card">
+                <div class="profile-pic">
+                    <img src="/Images/2x2.jpg" alt="2x2 Image">
+                </div>
+
+                <div class="profile-details">
+                    <div class="intro">
+                        <h2>John Red Jamilano</h2>
+                        <h4>Video Editor | Programmer</h4>
+                        <div class="social">
+                            <a href="https://www.facebook.com/JamilanoRed"><img src="/icons/fb.svg" alt="Facebook link"></a>
+                            <a href="https://discordapp.com/users/581366875074592778"><img src="/icons/discord.svg" alt="Discord Link"></a>
+                            <a href="https://www.linkedin.com/in/jamilanored/"><img src="/icons/bxl-linkedin-square.svg" alt="Linkedin link"></a>
+                            <a href="https://www.instagram.com/ballswagon/"><img src="/icons/ig.svg" alt="Instagram Link"></a>
+                        </div>
+                    </div>
+
+                    <div class="contact-info">
+                        <div class="row">
+                            <a href="#"> <img src="icons/phone.svg" alt="phone"></a>
+                        </div>
+                        <div class="content">
+                            <span>Phone</span>
+                            <h5>+918 453 2437</h5>
+                        </div>
+
+                        <div class="row">
+                            <a href="#"> <img src="icons/mail.svg" alt="mail"></a>
+                        </div>
+                        <div class="content">
+                            <span>Email</span>
+                            <h5>Jamilanored@gmail.com</h5>
+                        </div>
+
+                        <div class="row">
+                            <a href="#"> <img src="icons/map.svg" alt="mail"></a>
+                        </div>
+                        <div class="content">
+                            <span>Address</span>
+                            <h5>Mamala II, Sariaya, Quezon</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.querySelector('.nav-bar');
+            const slides = document.querySelectorAll('.slide-container .slide');
+            let currentSlide = 0;
+
+            const toggleNavClass = () => {
+                nav.classList.toggle('merged', window.scrollY === 0);
+            };
+
+            toggleNavClass();
+            window.addEventListener('scroll', toggleNavClass);
+
+            const showSlide = () => {
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('active-slide', index === currentSlide);
+                });
+            };
+
+            const nextSlide = () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide();
+            };
+
+            const prevSlide = () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide();
+            };
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'ArrowLeft') prevSlide();
+            });
+        });
+    </script>
+</body>
+
+</html>

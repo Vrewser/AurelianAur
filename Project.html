@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="index.html" class="logo-link" aria-label="Button"></a>
+            <p class="name">
+                <a href="index.html" class="nav-link">Aurelia.</a>
+                <span class="highlight">
+                    <a href="index.html" class="nav-link">aur</a>
+                </span>
+                <span class="middle">
+                    <img src="/Images/line.png" alt="Decorative line separator">
+                </span>
+                <span class="typing-animation">jellyfish</span>
+            </p>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="Project.html" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="Contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="About.html" class="nav-link">About</a></li>
+            </ul>
+        </nav>
+
+        <!-- Gallery Section -->
+        <div class="gallery-container">
+            <a target="_blank" href="/Banners/b1.jpg" class="gallery">
+                <img src="/Banners/b1.jpg" width="600" height="400" alt="splash">
+                <div class="desc">Latest Color Grading</div>
+            </a>
+
+            <a target="_blank" href="/Banners/b2.jpg" class="gallery">
+                <img src="/Banners/b2.jpg" width="600" height="400" alt="splash">
+                <div class="desc">Island Hopping Documentary Photo</div>
+            </a>
+
+            <a target="_blank" href="/Banners/b3.jpg" class="gallery">
+                <img src="/Banners/b3.jpg" width="600" height="400" alt="splash">
+                <div class="desc">Underground River  Documentary Photo</div>
+            </a>
+
+            <a target="_blank" href="/Banners/b4.jpg" class="gallery">
+                <img src="/Banners/b4.jpg" width="600" height="400" alt="splash">
+                <div class="desc">First Professional Camera Photo</div>
+            </a>
+
+            <a target="_blank" href="/Banners/b5.jpg" class="gallery">
+                <img src="/Banners/b5.jpg" width="600" height="400" alt="splash">
+                <div class="desc">First Attempt in Color Grading</div>
+            </a>
+
+            <a target="_blank" href="/Banners/b6.jpg" class="gallery">
+                <img src="/Banners/b6.jpg" width="600" height="400" alt="splash">
+                <div class="desc">VisioLoqui Application</div>
+            </a>
+
+            <a href="https://www.facebook.com/share/r/19ZBasDQ1S/" class="gallery">
+                <img src="/Banners/v7.jpg" width="600" height="400" alt="splash">
+                <div class="desc">RIZAL FILM</div>
+            </a>
+
+            <a href="https://www.facebook.com/share/v/19oEL4G9nT/" class="gallery">
+                <img src="/Banners/b8.jpg" width="600" height="400" alt="splash">
+                <div class="desc">TRAILER FOR RIZAL FILM</div>
+            </a>
+
+            <a target="_blank" href="/Banners/B9.png" class="gallery">
+                <img src="/Banners/B9.png" width="600" height="400" alt="splash">
+            </a>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.querySelector('.nav-bar');
+            const slides = document.querySelectorAll('.slide-container .slide');
+            let currentSlide = 0;
+
+            const toggleNavClass = () => {
+                nav.classList.toggle('merged', window.scrollY === 0);
+            };
+
+            toggleNavClass();
+            window.addEventListener('scroll', toggleNavClass);
+
+            const showSlide = () => {
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('active-slide', index === currentSlide);
+                });
+            };
+
+            const nextSlide = () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide();
+            };
+
+            const prevSlide = () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide();
+            };
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'ArrowLeft') prevSlide();
+            });
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health</title>
+    <link rel="stylesheet" href="css/file.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="index.html" class="logo-link" aria-label="Button"></a>
+            <p class="name">
+                <a href="index.html" class="nav-link">Aurelia.</a>
+                <span class="highlight">
+                    <a href="index.html" class="nav-link">aur</a>
+                </span>
+                <span class="middle">
+                    <img src="/Images/line.png" alt="Decorative line separator">
+                </span>
+                <span class="typing-animation">jellyfish</span>
+            </p>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="Project.html" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="Contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="About.html" class="nav-link">About</a></li>
+            </ul>
+        </nav>
+
+
+        <div class="slide-container">
+            <div class="slide active-slide">
+                <div class="image-container">
+                    <img src="/Images/2x2.jpg" alt="Profile Picture of John Red S. Jamilano" class="profile-img">
+                </div>
+                <p class="greeting">Hey there! I'm <span class="realname">John Red S. Jamilano</span>.</p>
+                <p class="intro">I am a passionate <span class="highlighted">Bachelor of Science in Information Technology</span> student with a strong interest in technology and photography. In addition, I enjoy video editing and exploring creative ways to tell stories through visuals!</p>
+                <p class="tagline">"To ensure healthy lives and promote well-being for all at all ages."</p>
+
+                <span class="button">
+                    <a href="sdg.html" class="btn toggle-btn">
+                        <img src="Images/logoheart.png" alt="Toggle Button">
+                        <span class="sdg">SDG 3</span>
+                    </a>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <!-- SCRIPT -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nav = document.querySelector('.nav-bar');
+            const slides = document.querySelectorAll('.slide-container .slide');
+            let currentSlide = 0;
+
+            const toggleNavClass = () => {
+                nav.classList.toggle('merged', window.scrollY === 0);
+            };
+
+            toggleNavClass();
+            window.addEventListener('scroll', toggleNavClass);
+
+            const showSlide = () => {
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('active-slide', index === currentSlide);
+                });
+            };
+
+            const nextSlide = () => {
+                currentSlide = (currentSlide + 1) % slides.length;
+                showSlide();
+            };
+
+            const prevSlide = () => {
+                currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+                showSlide();
+            };
+
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'ArrowRight') nextSlide();
+                if (e.key === 'ArrowLeft') prevSlide();
+            });
+        });
+    </script>
+
+</body>
+
+</html>

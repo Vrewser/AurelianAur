@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health</title>
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="container">
+        <nav class="nav-bar">
+            <a href="index.html" class="logo-link" aria-label="Button"></a>
+            <p class="name">
+                <a href="index.html" class="nav-link">Aurelia.</a>
+                <span class="highlight">
+                    <a href="index.html" class="nav-link">aur</a>
+                </span>
+                <span class="middle">
+                    <img src="/Images/line.png" alt="Decorative line separator">
+                </span>
+                <span class="typing-animation">jellyfish</span>
+            </p>
+            <ul class="nav-list">
+                <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="Project.html" class="nav-link">Projects</a></li>
+                <li class="nav-item"><a href="Contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="About.html" class="nav-link">About</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div class="about">
+        <div class="main">
+            <img src="/Images/2x2.jpg" alt="2x2 Image of Red">
+            <div class="about-text">
+                <h1>About Me</h1>
+                <h5>Video Editor | Programmer</h5>
+                <p>I am a dedicated film video editor and programmer with a passion for blending creativity and technology. My skills include HTML, CSS, and a foundational understanding of Java, which I am continually expanding. I take pride in crafting visually engaging and meaningful content, ensuring each project tells a compelling story. My technical expertise complements my creative abilities, enabling me to bring ideas to life both on screen and through code. As a lifelong learner and problem-solver, I enjoy exploring new tools and techniques, constantly striving to refine my skills and deliver high-quality work.</p>
+            </div>
+        </div>
+    </div>
+
+         <!-- SCRIPT -->
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+    const nav = document.querySelector('.nav-bar');
+    const slides = document.querySelectorAll('.slide-container .slide');
+    let currentSlide = 0;
+
+
+    const toggleNavClass = () => {
+        if (window.scrollY === 0) {
+            nav.classList.add('merged');
+        } else {
+            nav.classList.remove('merged');
+        }
+    };
+
+    toggleNavClass();
+
+    window.addEventListener('scroll', toggleNavClass);
+
+
+    const showSlide = () => {
+        slides.forEach((slide, index) => {
+            slide.classList.toggle('active-slide', index === currentSlide);
+        });
+    };
+
+    const nextSlide = () => {
+        currentSlide = (currentSlide + 1) % slides.length;
+        showSlide();
+    };
+
+
+    const prevSlide = () => {
+        currentSlide = (currentSlide - 1 + slides.length) % slides.length;
+        showSlide();
+    };
+
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        if (e.key === 'ArrowLeft') prevSlide();
+    });
+
+
+    showSlide();
+});
+    </script>
+
+</body>
+
+</html>
